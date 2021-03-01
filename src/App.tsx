@@ -115,6 +115,7 @@ type ChartProps = {
 
 
 //chart accepr property named `data` of type srcDataType[]
+//without destructuring so far
 const Chart: React.SFC<ChartProps> = (props) => {
 
     const data = props.data;
