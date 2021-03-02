@@ -2,9 +2,6 @@ import React from 'react';
 import './App.css';
 import { Bar } from 'react-chartjs-2';
 
-
-
-
 const srcData = [
   {
     year: 2015,
@@ -41,24 +38,6 @@ const srcData = [
       4553624
     ],
     color: 'hsla(104,46.15384%,54.11765%,1)'
-  },
-  {
-    year: 2017,
-    data: [
-      546988,
-      1031054,
-      1526958,
-      1929360,
-      2219497,
-      2472468,
-      2654013,
-      2876660,
-      3125501,
-      3464636,
-      3911575,
-      3976944
-    ],
-    color: 'hsla(191,100%,36.66667%,1)'
   }
 ];
 
@@ -113,13 +92,8 @@ type ChartProps = {
   data: srcDataType[]
 }
 
-
-//chart accepr property named `data` of type srcDataType[]
-//without destructuring so far
-const Chart: React.SFC<ChartProps> = (props) => {
-
-    const data = props.data;
- 
+const Chart: React.SFC<ChartProps> = ({ data }) => {
+  
   const config = {
     labels: labels,
     datasets: data.map((series, idx, arr) => {
@@ -137,7 +111,7 @@ const Chart: React.SFC<ChartProps> = (props) => {
   return <Bar data={config} options={options} />;
 };
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Chart data={srcData} />
