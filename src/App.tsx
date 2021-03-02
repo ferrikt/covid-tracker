@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
 import { Bar } from 'react-chartjs-2';
+//const Cases = require('./components/cases/Cases.tsx');
+
+import Header from './components/cases/Header';
+import Cases from './components/cases/Cases';
 
 const srcData = [
   {
@@ -114,7 +118,7 @@ const Chart: React.SFC<ChartProps> = ({ data }) => {
 const App = () => {
   return (
     <div className="App">
-      <Chart data={srcData} />
+      <Cases />
     </div>
   );
 }
