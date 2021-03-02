@@ -98,7 +98,7 @@ storiesOf('Updating chart Example', module).add('Line & Bar', () => {
     'September',
     'October',
     'November',
-    'December'
+    'December1'
   ];
 
   const Chart = ({ data }) => {
