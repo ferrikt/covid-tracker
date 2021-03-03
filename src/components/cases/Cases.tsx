@@ -1,7 +1,8 @@
-import * as React from 'react';
+import React, {ReactElement} from 'react';
 import * as Styled from './Styled'
 
-const Cases: React.SFC<{}> = () => {
+
+const Cases: React.SFC<{}> = () : ReactElement => {
   return (
     <Styled.CasesWrapper>
       <Styled.CasesContainer>
