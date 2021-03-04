@@ -1,12 +1,20 @@
-import * as React from "react";
-import { Box, AppBar } from "@material-ui/core";
+import React from "react";
+import CenterColumn from "./CenterColumn";
 import Header from "./Header";
-import { spacing } from "@material-ui/system";
+import LeftColumn from "./LeftColumn";
+import RightColumn from "./RightColumn";
+import { Grid, Box } from "theme-ui";
+
+import { MarginContainer } from "./Styled";
 
 const Dashboard: React.SFC<{}> = () => (
-  <div className="dashboard-page">
+  <Grid gap={0} columns={[3, "3fr 9fr 5fr"]}>
     <Header />
-  </div>
+
+    <LeftColumn />
+    <CenterColumn />
+    <RightColumn />
+  </Grid>
 );
 
 export default Dashboard;

@@ -2,41 +2,26 @@ import React from "react";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "theme-ui";
 
-import {
-  AppBar,
-  CssBaseline,
-  Typography,
-  createMuiTheme,
-} from "@material-ui/core";
-
-const theme = createMuiTheme({
-  typography: {
-    fontSize: 14,
-    fontFamily: [
-      "Avenir Next W01",
-      "Avenir Next W00",
-      "Avenir Next",
-      "Avenir",
-      "Helvetica Neue",
-      "sans-serif",
-    ].join(","),
+const theme = {
+  fonts: {
+    body:
+      "Avenir Next W01,Avenir Next W00,Avenir Next,Avenir,Helvetica Neue,sans-serif",
+    //heading: '"Avenir Next", sans-serif',
+    //monospace: "Menlo, monospace",
   },
-  palette: {
-    type: "dark",
-
-    background: {
-      default: "black",
-    },
+  colors: {
+    text: "#bdbdbd",
+    background: "#000000",
+    primary: "#e60000",
+    secondary: "#fff",
   },
-});
+};
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-
       <Dashboard />
     </ThemeProvider>
   );
