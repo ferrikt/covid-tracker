@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
+import DataContextProvider from "./context/DataContext";
 
 import { ThemeProvider } from "theme-ui";
 
@@ -19,10 +20,15 @@ const theme = {
   },
 };
 
+// 1. create a context and provider
+// 2. wrap app in a context
+// 3.context should have conuntries
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Dashboard />
+      <DataContextProvider>
+        <Dashboard />
+      </DataContextProvider>
     </ThemeProvider>
   );
 };

@@ -6,15 +6,20 @@ import RightColumn from "./RightColumn";
 import { Grid, Box } from "theme-ui";
 
 import { MarginContainer } from "./Styled";
+import { useCountryDataCtx } from "../context/DataContext";
 
-const Dashboard: React.SFC<{}> = () => (
-  <Grid gap={0} columns={[3, "3fr 9fr 5fr"]}>
-    <Header />
+const Dashboard: React.SFC<{}> = () => {
+  const { error } = useCountryDataCtx();
 
-    <LeftColumn />
-    <CenterColumn />
-    <RightColumn />
-  </Grid>
-);
+  return (
+    <Grid gap={0} columns={[3, "3fr 9fr 5fr"]}>
+      <Header />
 
+      <div>{error}</div>
+      <LeftColumn />
+      <CenterColumn />
+      <RightColumn />
+    </Grid>
+  );
+};
 export default Dashboard;
