@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext } from "react";
-
+import { TIMESERIES_CSV_URL } from "../constants";
+import { useTimeSeriesData } from "../hooks/useTimeSeriesData";
 interface IDataContext {
   countryData: { loading: boolean; error: string; data: DailyData[] | null };
 }
@@ -18,6 +19,11 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({
 
   const isCountryLoading = false;
   const error = "this is error";
+
+  const [
+    countryConfirmedTimeSeries, // confirmed cases by country-state
+    globalConfirmedTimeSeries,
+  ] = useTimeSeriesData(TIMESERIES_CSV_URL.CONFIRMED);
 
   return (
     <DataContext.Provider

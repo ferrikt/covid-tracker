@@ -15,7 +15,6 @@ const Dashboard: React.SFC<{}> = () => {
     <Grid gap={0} columns={[3, "3fr 9fr 5fr"]}>
       <Header />
 
-      <div>{error}</div>
       <LeftColumn />
       <CenterColumn />
       <RightColumn />
