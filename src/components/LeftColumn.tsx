@@ -2,6 +2,7 @@ import * as React from "react";
 import { Container, GlobalCases } from "./Styled";
 
 import { useCountryDataCtx } from "../context/DataContext";
+import { Box, Grid } from "theme-ui";
 
 interface IProps {
   name?: string;
@@ -22,9 +23,14 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
     <GlobalCases>
       <div>{"Left column 3 "}</div>
       <div>{error}</div>
-      {a.map((x) => (
-        <div>{x}</div>
-      ))}
+
+      <Grid gap={2} columns={[1, "1fr"]}>
+        {a.map((x) => (
+          <Box bg="muted">{x}</Box>
+        ))}
+      </Grid>
+
+      <ul></ul>
     </GlobalCases>
   );
 };
