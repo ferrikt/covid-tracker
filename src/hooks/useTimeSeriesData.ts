@@ -9,6 +9,8 @@ export const useTimeSeriesData = (
     const [countriesData, setCountriesData] = useState<Map<string,string> | null>(
     null
   );
+
+  //const [countriesData, setCountriesData] = useState<CountryTimeData[] | null>(
   
   const [globalData, setGlobalData] = useState<Map<string,string> | null>(null);
 
