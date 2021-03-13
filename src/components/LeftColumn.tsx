@@ -1,5 +1,6 @@
+//import { jsx } from "theme-ui";
+
 import * as React from "react";
-import { Container, GlobalCases } from "./Styled";
 
 import { useCountryDataCtx } from "../context/DataContext";
 import { Box, Grid, Flex } from "theme-ui";
@@ -20,29 +21,25 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
   data && data.forEach(logMapElements);
   debugger;
   return (
-    <GlobalCases>
-      <Grid
-        // gridArea="left"
-        //bg="black"
-        // gridTemplateRows="2fr 12fr 1.5fr"
-        gap={1}
-      >
-        <div
-        // direction="column"
-        // align="center"
-        // justify="center"
-        // p={2}
-        // bg="gray.700"
-        >
-          <div>{"Left column 3 "}</div>
-          <div>{error}</div>
+    <Grid
+      sx={{
+        gridTemplateRows: "1fr 2fr 1fr",
+        // gridArea: "left",
+        border: "1px solid #363636",
+        marginLeft: "10px",
+        background: "#222",
+      }}
+    >
+      <div>
+        <div>{"Left column 3 "}</div>
+        <div>{error}</div>
+        <div>row3</div>
 
-          {a.map((x) => (
-            <Box bg="muted">{x}</Box>
-          ))}
-        </div>
-      </Grid>
-    </GlobalCases>
+        {/* {a.map((x) => (
+          <Box bg="muted">{x}</Box>
+        ))} */}
+      </div>
+    </Grid>
   );
 };
 

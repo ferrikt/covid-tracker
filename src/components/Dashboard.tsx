@@ -12,7 +12,13 @@ const Dashboard: React.SFC<{}> = () => {
   const { error } = useCountryDataCtx();
 
   return (
-    <Grid gap={0} columns={[3, "3fr 9fr 5fr"]}>
+    <Grid
+      gap={0}
+      columns={[3, "3fr 9fr 5fr"]}
+      sx={{
+        gridTemplateAreas: "header left center right",
+      }}
+    >
       <Header />
 
       <LeftColumn />
