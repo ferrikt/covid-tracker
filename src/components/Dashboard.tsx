@@ -14,9 +14,10 @@ const Dashboard: React.SFC<{}> = () => {
   return (
     <Grid
       gap={0}
-      columns={[3, "3fr 9fr 5fr"]}
       sx={{
-        gridTemplateAreas: "header left center right",
+        gridTemplateAreas: `"header header header" "left center right"`,
+        gridTemplateColumns: "3fr 9fr 5fr",
+        // gridTemplateRows: `"50px 400px 600px 750px" "9vh 94vh"`,
       }}
     >
       <Header />

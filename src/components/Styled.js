@@ -4,8 +4,9 @@ export const MarginContainer = styled.div`
     border: 1px solid #363636;
     margin: 10px;
     background: #222;
-    grid-column-start:1;
-    grid-column-end:4;
+   
+    display:flex;
+    grid-area:header
     
 `;
 

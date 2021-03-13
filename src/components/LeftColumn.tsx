@@ -23,22 +23,20 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
   return (
     <Grid
       sx={{
-        gridTemplateRows: "1fr 2fr 1fr",
-        // gridArea: "left",
+        gridTemplateRows: "1fr 5fr 2fr",
+        gridArea: "left",
         border: "1px solid #363636",
         marginLeft: "10px",
         background: "#222",
       }}
     >
-      <div>
-        <div>{"Left column 3 "}</div>
-        <div>{error}</div>
-        <div>row3</div>
+      <Flex>{"Left column 3 "}</Flex>
+      <Flex>{error}</Flex>
+      <Flex>row3</Flex>
 
-        {/* {a.map((x) => (
+      {/* {a.map((x) => (
           <Box bg="muted">{x}</Box>
         ))} */}
-      </div>
     </Grid>
   );
 };

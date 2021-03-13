@@ -1,14 +1,21 @@
 import * as React from "react";
-import { Container, GlobalCases } from "./Styled";
+import { Flex } from "theme-ui";
 
 interface IProps {
   name?: string;
 }
 
 const RightColumn: React.SFC<IProps> = (props: IProps) => (
-  <GlobalCases>
+  <Flex
+    sx={{
+      gridArea: "right",
+      border: "1px solid #363636",
+      marginLeft: "10px",
+      background: "#222",
+    }}
+  >
     <div>Right column 5</div>
-  </GlobalCases>
+  </Flex>
 );
 
 export default RightColumn;
