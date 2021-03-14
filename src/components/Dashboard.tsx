@@ -5,7 +5,6 @@ import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import { Grid, Box } from "theme-ui";
 
-import { MarginContainer } from "./Styled";
 import { useCountryDataCtx } from "../context/DataContext";
 
 const Dashboard: React.SFC<{}> = () => {
@@ -17,7 +16,7 @@ const Dashboard: React.SFC<{}> = () => {
       sx={{
         gridTemplateAreas: `"header header header" "left center right"`,
         gridTemplateColumns: "3fr 9fr 5fr",
-        // gridTemplateRows: `"50px 400px 600px 750px" "9vh 94vh"`,
+        gridTemplateRows: "9vh 80vh",
       }}
     >
       <Header />

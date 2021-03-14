@@ -12,6 +12,7 @@ const RightColumn: React.SFC<IProps> = (props: IProps) => (
       border: "1px solid #363636",
       marginLeft: "10px",
       background: "#222",
+      marginRight: "10px",
     }}
   >
     <div>Right column 5</div>

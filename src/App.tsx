@@ -9,8 +9,8 @@ const theme = {
   fonts: {
     body:
       "Avenir Next W01,Avenir Next W00,Avenir Next,Avenir,Helvetica Neue,sans-serif",
-    //heading: '"Avenir Next", sans-serif',
-    //monospace: "Menlo, monospace",
+    heading: '"Avenir Next", sans-serif',
+    monospace: "Menlo, monospace",
   },
   colors: {
     text: "#bdbdbd",
@@ -20,9 +20,6 @@ const theme = {
   },
 };
 
-// 1. create a context and provider
-// 2. wrap app in a context
-// 3.context should have conuntries
 const App = () => {
   return (
     <ThemeProvider theme={theme}>

@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { useCountryDataCtx } from "../context/DataContext";
-import { Box, Grid, Flex } from "theme-ui";
+import { Grid, Flex, Heading, Text, Box } from "theme-ui";
 
 interface IProps {
   name?: string;
@@ -19,24 +19,55 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
   };
 
   data && data.forEach(logMapElements);
-  debugger;
+
   return (
     <Grid
       sx={{
-        gridTemplateRows: "1fr 5fr 2fr",
+        gridTemplateRows: "1fr 15fr 2fr",
         gridArea: "left",
         border: "1px solid #363636",
         marginLeft: "10px",
         background: "#222",
       }}
     >
-      <Flex>{"Left column 3 "}</Flex>
-      <Flex>{error}</Flex>
-      <Flex>row3</Flex>
+      <Flex
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Heading>Global cases</Heading>
+        <Heading color="red">3000</Heading>
+      </Flex>
 
-      {/* {a.map((x) => (
-          <Box bg="muted">{x}</Box>
-        ))} */}
+      <Flex
+        sx={{
+          overflowY: "scroll",
+          flexDirection: "column",
+        }}
+      >
+        <Flex>
+          <Text
+            sx={{
+              fontSize: 1,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            Cases by Country/Region/Sovereignty
+          </Text>
+        </Flex>
+        <Flex>
+          <ul>
+            {a.map((x) => (
+              <li>{x}</li>
+            ))}
+          </ul>
+        </Flex>
+        <Flex>3</Flex>
+      </Flex>
+      <Flex>row3</Flex>
     </Grid>
   );
 };
