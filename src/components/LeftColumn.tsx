@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { useCountryDataCtx } from "../context/DataContext";
 import { Grid, Flex, Heading, Text, Box } from "theme-ui";
-
+import { List, ListItem } from "./Styled";
 interface IProps {
   name?: string;
 }
@@ -12,10 +12,13 @@ interface IProps {
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
   const { loading, error, data } = useCountryDataCtx();
 
-  let a: string[] = []; //let fruits: Array<string>
+  let a: Array<{ country: string; value: string }> = [];
 
   const logMapElements = (value: string, key: string) => {
-    a.push(`${key} = ${value}`);
+    a.push({
+      country: key,
+      value: value,
+    });
   };
 
   data && data.forEach(logMapElements);
@@ -59,11 +62,23 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
           </Text>
         </Flex>
         <Flex>
-          <ul>
+          <List>
             {a.map((x) => (
-              <li>{x}</li>
+              <ListItem>
+                <Text
+                  sx={{
+                    fontWeight: "normal",
+                    textAlign: "left",
+                  }}
+                >
+                  <span style={{ color: "#e60000" }}>
+                    <strong>{x.value}</strong>
+                  </span>
+                  <span style={{ color: "#d6d6d6" }}> {x.country}</span>
+                </Text>
+              </ListItem>
             ))}
-          </ul>
+          </List>
         </Flex>
         <Flex>3</Flex>
       </Flex>

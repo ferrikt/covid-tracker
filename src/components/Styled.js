@@ -7,19 +7,20 @@ export const Title = styled.div`
     height: 44px;
 `;
 
-export const Container = styled.div`
-    border: solid 1px red;
-    height:44px;
+export const List = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    padding-top:10px;
 `;
 
-export const GlobalCases = styled.div`
-    border: 1px solid #363636;
-    margin-left: 10px;
-    background: #222;  
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-    height:83px;
+export const ListItem = styled.li`
+    margin-bottom: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #718096;
+    padding-left:10px;
+    font-size: 1.1019rem;
 `;
 
 

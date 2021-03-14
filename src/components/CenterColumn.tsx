@@ -1,5 +1,4 @@
 import * as React from "react";
-import { GlobalCases } from "./Styled";
 import { Box, Grid, Flex } from "theme-ui";
 
 interface IProps {
