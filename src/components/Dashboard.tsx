@@ -16,7 +16,7 @@ const Dashboard: React.SFC<{}> = () => {
       sx={{
         gridTemplateAreas: `"header header header" "left center right"`,
         gridTemplateColumns: "3fr 9fr 5fr",
-        gridTemplateRows: "9vh 80vh",
+        gridTemplateRows: "9vh 90vh",
       }}
     >
       <Header />

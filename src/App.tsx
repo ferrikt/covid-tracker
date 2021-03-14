@@ -13,10 +13,22 @@ const theme = {
     monospace: "Menlo, monospace",
   },
   colors: {
-    text: "#bdbdbd",
+    text: "#d6d6d6",
     background: "#000000",
     primary: "#e60000",
     secondary: "#fff",
+    red: "#e60000",
+  },
+  text: {
+    caps: {
+      textTransform: "uppercase",
+      letterSpacing: "0.2em",
+    },
+    heading: {
+      fontFamily: "heading",
+      fontWeight: "heading",
+      lineHeight: "heading",
+    },
   },
 };
 

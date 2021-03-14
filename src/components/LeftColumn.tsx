@@ -12,25 +12,27 @@ interface IProps {
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
   const { loading, error, data } = useCountryDataCtx();
 
-  let a: Array<{ country: string; value: string }> = [];
+  let dataArray: Array<{ country: string; value: number }> = [];
 
   const logMapElements = (value: string, key: string) => {
-    a.push({
+    dataArray.push({
       country: key,
-      value: value,
+      value: Number(value),
     });
   };
 
   data && data.forEach(logMapElements);
+
+  let sortedData: Array<{ country: string; value: number }> = dataArray.sort(
+    (a, b) => b.value - a.value
+  );
 
   return (
     <Grid
       sx={{
         gridTemplateRows: "1fr 15fr 2fr",
         gridArea: "left",
-        border: "1px solid #363636",
         marginLeft: "10px",
-        background: "#222",
       }}
     >
       <Flex
@@ -38,51 +40,46 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
+          background: "#222",
+          border: "1px solid #363636",
+          padding: "10px 0 10px 0",
         }}
       >
         <Heading>Global cases</Heading>
-        <Heading color="red">3000</Heading>
+        <Heading color="#e60000">119,471,573</Heading>
       </Flex>
 
       <Flex
         sx={{
           overflowY: "scroll",
           flexDirection: "column",
+          background: "#222",
+          border: "1px solid #363636",
         }}
       >
         <Flex>
-          <Text
-            sx={{
-              fontSize: 1,
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
-            Cases by Country/Region/Sovereignty
-          </Text>
-        </Flex>
-        <Flex>
           <List>
-            {a.map((x) => (
+            {sortedData.map((x) => (
               <ListItem>
-                <Text
-                  sx={{
-                    fontWeight: "normal",
-                    textAlign: "left",
-                  }}
-                >
+                <Text>
                   <span style={{ color: "#e60000" }}>
-                    <strong>{x.value}</strong>
+                    {x.value.toLocaleString()}{" "}
                   </span>
-                  <span style={{ color: "#d6d6d6" }}> {x.country}</span>
+                  {x.country}
                 </Text>
               </ListItem>
             ))}
           </List>
         </Flex>
-        <Flex>3</Flex>
       </Flex>
-      <Flex>row3</Flex>
+      <Flex
+        sx={{
+          background: "#222",
+          border: "1px solid #363636",
+        }}
+      >
+        Last updated:
+      </Flex>
     </Grid>
   );
 };

@@ -18,9 +18,12 @@ export const ListItem = styled.li`
     margin-bottom: 0.25rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #718096;
+    border-bottom: 1px solid #5c5c5c;
     padding-left:10px;
     font-size: 1.1019rem;
+    font-weight: normal;
+    text-align: left;
+    display: flex;
 `;
 
 
