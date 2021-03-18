@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
-  const { loading, error, data } = useCountryDataCtx();
+  const { loading, error, data, lastUpdate } = useCountryDataCtx();
 
   let dataArray: Array<{ country: string; value: number }> = [];
 
@@ -76,9 +76,24 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
         sx={{
           background: "#222",
           border: "1px solid #363636",
+          flexDirection: "column",
+          paddingLeft: "10px",
+          paddingTop: "10px",
         }}
       >
-        Last updated:
+        <>
+          <Text color="gray.400">Last Updated at</Text>
+          <Text
+            sx={{
+              color: "gray.400",
+              fontSize: "2xl",
+              fontWeight: 500,
+              paddingTop: "10px",
+            }}
+          >
+            {lastUpdate}
+          </Text>
+        </>
       </Flex>
     </Grid>
   );

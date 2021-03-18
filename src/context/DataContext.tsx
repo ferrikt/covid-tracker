@@ -6,6 +6,7 @@ interface IDataContext {
     loading: boolean;
     error: string;
     data: Map<string, string> | null;
+    lastUpdate: string;
   };
 }
 
@@ -33,6 +34,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({
           loading: isCountryLoading,
           error,
           data: countryConfirmedTimeSeries, // confirmed cases by country-state
+          lastUpdate: "19 March 2021",
         },
       }}
     >
