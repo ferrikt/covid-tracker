@@ -1,9 +1,9 @@
-import React, { ReactNode, createContext, useContext } from "react";
-import { TIMESERIES_CSV_URL } from "../constants";
-import { useTimeSeriesData } from "../hooks/useTimeSeriesData";
+import React, { ReactNode, createContext, useContext } from 'react';
+import { TIMESERIES_CSV_URL } from '../constants';
+import { useTimeSeriesData } from '../hooks/useTimeSeriesData';
 interface IDataContext {
   countryData: {
-    loading: boolean;
+    isLoading: boolean;
     error: string;
     data: Map<string, string> | null;
     lastUpdate: string;
@@ -17,25 +17,25 @@ interface DataContextProviderProps {
 }
 
 const DataContextProvider: React.FC<DataContextProviderProps> = ({
-  children,
+  children
 }) => {
-  const isCountryLoading = false;
-  const error = "this is error";
+  const error = 'this is error';
 
   const [
     countryConfirmedTimeSeries, // confirmed cases by country-state
     globalConfirmedTimeSeries,
+    isLoading
   ] = useTimeSeriesData(TIMESERIES_CSV_URL.CONFIRMED);
 
   return (
     <DataContext.Provider
       value={{
         countryData: {
-          loading: isCountryLoading,
+          isLoading,
           error,
           data: countryConfirmedTimeSeries, // confirmed cases by country-state
-          lastUpdate: "19 March 2021",
-        },
+          lastUpdate: '19 March 2021'
+        }
       }}
     >
       {children}
@@ -50,7 +50,7 @@ export const useCountryDataCtx = () => {
   if (countryData) {
     return countryData;
   } else {
-    throw new Error("dailyData is empty.");
+    throw new Error('dailyData is empty.');
   }
 };
 

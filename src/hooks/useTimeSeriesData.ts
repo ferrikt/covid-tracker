@@ -4,19 +4,21 @@ import { useEffect, useState } from "react";
 
 export const useTimeSeriesData = (
   url: string
-): [Map<string,string> | null, Map<string,string>  | null] => {
+): [Map<string,string> | null, Map<string,string>  | null, boolean] => {
   
     const [countriesData, setCountriesData] = useState<Map<string,string> | null>(
     null
   );
 
-  //const [countriesData, setCountriesData] = useState<CountryTimeData[] | null>(
+   const [isLoading, setIsLoading] = useState(true);
   
   const [globalData, setGlobalData] = useState<Map<string,string> | null>(null);
 
    let countryData = new Map();
 
   useEffect(() => {
+
+    setIsLoading(true);
        d3.csv(url).then((loadedData) => {   
           
            const columnCount = Object.keys(loadedData[0]).length;
@@ -38,9 +40,15 @@ export const useTimeSeriesData = (
             setCountriesData(countryData);
        })
 
+       for(let i=0;i<100000;i++) { //simulate delay for now
+         console.log(i);
+       }
+
+       setIsLoading(false);
+
   },[url])
 
-  return [countriesData, globalData];
+  return [countriesData, globalData, isLoading];
 };
 
 
