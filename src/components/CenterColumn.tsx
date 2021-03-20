@@ -1,21 +1,22 @@
-import * as React from "react";
-import { Box, Grid, Flex } from "theme-ui";
+import * as React from 'react';
+import { Box, Grid, Flex } from 'theme-ui';
+import News from './News';
 
-interface IProps {
-  name?: string;
-}
+interface IProps {}
 
 const CenterColumn: React.SFC<IProps> = (props: IProps) => (
-  <Flex
-    sx={{
-      gridArea: "center",
-      border: "1px solid #363636",
-      marginLeft: "10px",
-      background: "#222",
-    }}
-  >
-    <div>Center column 9</div>
-  </Flex>
+    <Grid
+        sx={{
+            gridArea: 'center',
+            border: '1px solid #363636',
+            marginLeft: '10px',
+            background: '#222',
+            gridTemplateRows: '7fr 9fr'
+        }}
+    >
+        <div>this is an area for the map</div>
+        <News />
+    </Grid>
 );
 
 export default CenterColumn;
