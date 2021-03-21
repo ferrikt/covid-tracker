@@ -19,28 +19,30 @@ const News: React.SFC<IProps> = () => {
                     }}
                 >
                     {newsData.map((news, i) => (
-                        <Link key={i} href={news.link} target="_blank" mr={1}>
-                            <Box
-                                sx={{
-                                    border: '1px gray solid',
-                                    borderRadius: '5px',
-                                    p: 2
-                                }}
-                            >
-                                <Heading
+                        <Box
+                            sx={{
+                                border: '1px gray solid',
+                                borderRadius: '5px',
+                                p: 2,
+                                display: 'flex'
+                            }}
+                        >
+                            <Link key={i} href={news.link} target="_blank" sx={{ textDecoration: 'none' }}>
+                                <Text
                                     sx={{
-                                        color: 'gray.400',
+                                        color: 'gray.10',
                                         mb: 1,
-                                        fontSize: '14px'
+                                        fontSize: 'sm',
+                                        fontWeight: 'bold'
                                     }}
                                 >
                                     {news.title}
-                                </Heading>
-                                <Text sx={{ color: 'gray.500', fontSize: '10px' }}>
+                                </Text>
+                                <Text sx={{ color: 'gray.10', fontSize: 'xs' }}>
                                     {news.source} | {news.date}
                                 </Text>
-                            </Box>
-                        </Link>
+                            </Link>
+                        </Box>
                     ))}
                 </Flex>
             )}

@@ -14,7 +14,7 @@ const CenterColumn: React.SFC<IProps> = (props: IProps) => (
             gridTemplateRows: '7fr 9fr'
         }}
     >
-        <div>this is an area for the map</div>
+        <Flex sx={{ flexDirection: 'column' }}>this is an area for the map</Flex>
         <News />
     </Grid>
 );
