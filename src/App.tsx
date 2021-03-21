@@ -15,8 +15,8 @@ const theme = {
         text: '#d6d6d6',
         background: '#000000',
         primary: '#e60000',
-        secondary: '#fff',
         red: '#e60000',
+        heading: '#fff',
         gray: {
             10: '#bdbdbd',
             50: '#f7fafc',
@@ -38,7 +38,8 @@ const theme = {
         '6xl': '3.75rem',
         '7xl': '4.5rem',
         '8xl': '6rem',
-        '9xl': '8rem'
+        '9xl': '8rem',
+        heading: '2xl'
     },
     fontWeights: {
         hairline: 100,
@@ -49,7 +50,8 @@ const theme = {
         semibold: 600,
         bold: 700,
         extrabold: 800,
-        black: 900
+        black: 900,
+        heading: 500
     },
     text: {
         caps: {
@@ -59,7 +61,8 @@ const theme = {
         heading: {
             fontFamily: 'heading',
             fontWeight: 'heading',
-            lineHeight: 'heading'
+            lineHeight: 'heading',
+            color: 'heading'
         }
     }
 };

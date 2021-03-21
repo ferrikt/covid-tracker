@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { NewsData } from "../types";
 
-export const useNewsData = (): [boolean, string, NewsData[] | null] => {
+export const useNewsData = (): [boolean, string | null, NewsData[] | null] => {
     const [isNewsLoading, setIsNewsLoading] = useState(true);
-    const [error, setError] = useState("");
+   
     const [newsData, setNewsData] = useState<NewsData[] | null>(null);
 
     useEffect(() => {
         setIsNewsLoading(true);
-        let result: NewsData[] = [];
-
+       
         let data = [
       {
           "title": "Novartis agrees to help make CureVac COVID-19 vaccine",
@@ -76,7 +75,7 @@ export const useNewsData = (): [boolean, string, NewsData[] | null] => {
         setNewsData(data);
 
         setIsNewsLoading(false);
-    })
+    },[])
 
-    return [isNewsLoading, error, newsData];
+    return [isNewsLoading, null, newsData];
 }

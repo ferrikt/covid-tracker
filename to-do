@@ -1,4 +1,4 @@
-0. setup prettier
+0. setup prettier (dosnt work for TS files as yet)
 
 1. add and check loading logic for LeftColumn Component
 
@@ -12,3 +12,5 @@
 5. add error loading to all components
 
 6. news component - add header and than all flex align is rboken, fxi that - so far component is without header
+
+7. sort out main colors

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Grid, Flex } from 'theme-ui';
+import { Grid, Flex } from 'theme-ui';
 import News from './News';
 
 interface IProps {}
@@ -11,7 +11,7 @@ const CenterColumn: React.SFC<IProps> = (props: IProps) => (
             border: '1px solid #363636',
             marginLeft: '10px',
             background: '#222',
-            gridTemplateRows: '7fr 9fr'
+            gridTemplateRows: 'auto 250px'
         }}
     >
         <Flex sx={{ flexDirection: 'column' }}>this is an area for the map</Flex>

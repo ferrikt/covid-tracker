@@ -6,11 +6,18 @@ import Loading from './Loading';
 interface IProps {}
 
 const News: React.SFC<IProps> = () => {
-    const [isLoading, error, newsData] = useNewsData();
+    const [isLoading, , newsData] = useNewsData();
     return isLoading ? (
         <Loading />
     ) : (
-        <>
+        <Flex
+            sx={{
+                flexDirection: 'column',
+                p: 2
+            }}
+        >
+            <Heading>Covid news</Heading>
+
             {newsData && newsData.length > 0 && (
                 <Flex
                     sx={{
@@ -46,7 +53,7 @@ const News: React.SFC<IProps> = () => {
                     ))}
                 </Flex>
             )}
-        </>
+        </Flex>
     );
 };
 export default News;
