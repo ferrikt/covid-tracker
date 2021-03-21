@@ -10,3 +10,5 @@
 4. make the news work - central section
 
 5. add error loading to all components
+
+6. news component - add header and than all flex align is rboken, fxi that - so far component is without header
