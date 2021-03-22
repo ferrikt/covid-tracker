@@ -24,26 +24,39 @@ export const useTimeSeriesData = (
            const columnCount = Object.keys(loadedData[0]).length;
            const columns = loadedData["columns"];
            const lastColumnName = columns[columnCount-1];
+           const prevColumnName = columns[columnCount-2];
 
            loadedData.forEach(row => {
                const countryName = row["Country/Region"];
                if (!countryData.has(countryName)) {
-                countryData.set(countryName,row[lastColumnName])
+                countryData.set(countryName,{ 
+                  today: row[lastColumnName], 
+                  yesterday: row[prevColumnName],
+                  newCases: Number(row[lastColumnName])-Number(row[prevColumnName])
+                })
                }
                else {
                    const countryCases = countryData.get(countryName);
-                   const updatedCases = Number(row[lastColumnName])+Number(countryCases);
-                   countryData.set(countryName,updatedCases);
+                   const updatedCasesToday = Number(row[lastColumnName])+Number(countryCases.today);
+                   const updatedCasesYday = Number(row[prevColumnName])+Number(countryCases.yesterday);
+                   countryData.set(countryName, {
+                     today:updatedCasesToday, 
+                     yesterday:updatedCasesYday,
+                     newCases: updatedCasesToday-updatedCasesYday});
                }
+           })
+
+           countryData.forEach(row => {
+
            })
 
             setCountriesData(countryData);
        })
 
-       for(let i=0;i<100000;i++) { //simulate delay for now
+       for(let i=0;i<1000;i++) { //simulate delay for now
          console.log(i);
        }
-
+debugger;
        setIsLoading(false);
 
   },[url])

@@ -16,10 +16,10 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
 
     let dataArray: Array<{ country: string; value: number }> = [];
 
-    const logMapElements = (value: string, key: string) => {
+    const logMapElements = (value: any, key: string) => {
         dataArray.push({
             country: key,
-            value: Number(value)
+            value: Number(value.today)
         });
     };
 
