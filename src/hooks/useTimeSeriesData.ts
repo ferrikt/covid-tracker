@@ -1,20 +1,20 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
-//import { CountryTimeData, DateAndCount } from "../types";
+import { CountryData } from "../types";
+
 
 export const useTimeSeriesData = (
   url: string
-): [Map<string,string> | null, Map<string,string>  | null, boolean] => {
+): [Map<string,CountryData> | null, Number, boolean] => {
+    
+  const [countriesData, setCountriesData] = useState<Map<string,CountryData> | null>(null);
   
-    const [countriesData, setCountriesData] = useState<Map<string,string> | null>(
-    null
-  );
-
-   const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   
-  const [globalData, setGlobalData] = useState<Map<string,string> | null>(null);
+  const [globalCases, setGlobalCases] = useState(0);
 
-   let countryData = new Map();
+  let countryData = new Map();
+ 
 
   useEffect(() => {
 
@@ -25,15 +25,18 @@ export const useTimeSeriesData = (
            const columns = loadedData["columns"];
            const lastColumnName = columns[columnCount-1];
            const prevColumnName = columns[columnCount-2];
+           let glCases = 0;
 
            loadedData.forEach(row => {
                const countryName = row["Country/Region"];
                if (!countryData.has(countryName)) {
                 countryData.set(countryName,{ 
-                  today: row[lastColumnName], 
-                  yesterday: row[prevColumnName],
+                  today: Number(row[lastColumnName]), 
+                  yesterday: Number(row[prevColumnName]),
                   newCases: Number(row[lastColumnName])-Number(row[prevColumnName])
                 })
+                glCases += Number(row[lastColumnName]);
+               
                }
                else {
                    const countryCases = countryData.get(countryName);
@@ -43,13 +46,12 @@ export const useTimeSeriesData = (
                      today:updatedCasesToday, 
                      yesterday:updatedCasesYday,
                      newCases: updatedCasesToday-updatedCasesYday});
+                   glCases += Number(row[lastColumnName]);
+                 
                }
            })
 
-           countryData.forEach(row => {
-
-           })
-
+            setGlobalCases(glCases);
             setCountriesData(countryData);
        })
 
@@ -61,7 +63,7 @@ debugger;
 
   },[url])
 
-  return [countriesData, globalData, isLoading];
+  return [countriesData, globalCases, isLoading];
 };
 
 

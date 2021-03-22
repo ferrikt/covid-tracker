@@ -6,13 +6,10 @@ import { useCountryDataCtx } from '../context/DataContext';
 import { Grid, Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
 import Loading from './Loading';
-
-interface IProps {
-    name?: string;
-}
+import { IProps } from '../types';
 
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
-    const { isLoading, data, lastUpdate } = useCountryDataCtx();
+    const { isLoading, data, globalCases } = useCountryDataCtx();
 
     let dataArray: Array<{ country: string; value: number }> = [];
 
@@ -50,7 +47,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                 ) : (
                     <>
                         <Heading>Global cases</Heading>
-                        <Heading color="#e60000">119,471,573</Heading>
+                        <Heading color="#e60000">{globalCases.toLocaleString()}</Heading>
                     </>
                 )}
             </Flex>
@@ -95,7 +92,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                 ) : (
                     <>
                         <Heading sx={{ fontSize: 'md' }}>Last Updated at</Heading>
-                        <Heading>{lastUpdate}</Heading>
+                        <Heading>{}</Heading>
                     </>
                 )}
             </Flex>

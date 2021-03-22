@@ -1,15 +1,7 @@
 import React, { ReactNode, createContext, useContext } from 'react';
 import { TIMESERIES_CSV_URL } from '../constants';
 import { useTimeSeriesData } from '../hooks/useTimeSeriesData';
-interface IDataContext {
-    countryData: {
-        isLoading: boolean;
-        error: string;
-        data: Map<string, string> | null;
-        lastUpdate: string;
-    };
-}
-
+import { IDataContext } from '../types';
 const DataContext = createContext<Partial<IDataContext>>({});
 
 interface DataContextProviderProps {
@@ -32,7 +24,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) =
                     isLoading,
                     error,
                     data: countryConfirmedTimeSeries, // confirmed cases by country-state
-                    lastUpdate: '19 March 2021'
+                    globalCases: globalConfirmedTimeSeries
                 }
             }}
         >
