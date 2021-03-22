@@ -18,6 +18,7 @@
 22.03 trying to understand how render map and which data we need for that, no coding so far
 
 plan
+feature1
 1) https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-21-2021.csv
 2) iterate via results -> take fields for map 
 name
@@ -29,6 +30,9 @@ active
 new
 3) use array from 2 to draw map with tooltips
 4) add tabs for every case type
+
+feature2
+add selected country support
 
 
 
