@@ -11,11 +11,9 @@ export const List = styled.ul`
     list-style-type: none;
     margin: 0;
     padding-left: 0;
-    padding-top:10px;
 `;
 
-export const ListItem = styled.li`
-    margin-bottom: 0.25rem;
+export const ListItem = styled.li` 
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #5c5c5c;
@@ -24,6 +22,8 @@ export const ListItem = styled.li`
     font-weight: normal;
     text-align: left;
     display: flex;
+    cursor: pointer;
+    background: ${props => props.selected ? 'black': ''};
 `;
 
 

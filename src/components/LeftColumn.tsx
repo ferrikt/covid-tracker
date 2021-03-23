@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { useCountryDataCtx } from '../context/dataContext';
+import { useSelectCountryCtx } from '../context/selectContext';
 import { Grid, Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
 import Loading from './Loading';
@@ -10,6 +11,8 @@ import { IProps } from '../types';
 
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
     const { isLoading, data, globalCases } = useCountryDataCtx();
+
+    const { selectedCountry, handleCountryClick } = useSelectCountryCtx();
 
     let dataArray: Array<{ country: string; value: number }> = [];
 
@@ -66,7 +69,10 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                     <Flex>
                         <List>
                             {sortedData.map((x) => (
-                                <ListItem>
+                                <ListItem
+                                    onClick={() => handleCountryClick(x.country)}
+                                    selected={selectedCountry === x.country}
+                                >
                                     <Text>
                                         <span style={{ color: '#e60000' }}>{x.value.toLocaleString()} </span>
                                         {x.country}

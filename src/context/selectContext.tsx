@@ -33,4 +33,14 @@ const SelectContextProvider: React.FC<DataContextProviderProps> = ({ children })
     );
 };
 
+export const useSelectCountryCtx = () => {
+    const { selectedCountry, setSelectedCountry, handleCountryClick } = useContext(SelectContext);
+
+    if (typeof selectedCountry !== 'undefined' && setSelectedCountry && handleCountryClick) {
+        return { selectedCountry, setSelectedCountry, handleCountryClick };
+    } else {
+        throw new Error();
+    }
+};
+
 export default SelectContextProvider;

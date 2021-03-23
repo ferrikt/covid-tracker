@@ -11,11 +11,9 @@ interface DataContextProviderProps {
 const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) => {
     const error = 'this is error';
 
-    const [
-        countryConfirmedTimeSeries, // confirmed cases by country-state
-        globalConfirmedTimeSeries,
-        isLoading
-    ] = useTimeSeriesData(TIMESERIES_CSV_URL.CONFIRMED);
+    const [countryConfirmedTimeSeries, globalConfirmedTimeSeries, isLoading] = useTimeSeriesData(
+        TIMESERIES_CSV_URL.CONFIRMED
+    );
 
     return (
         <DataContext.Provider
@@ -23,7 +21,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) =
                 countryData: {
                     isLoading,
                     error,
-                    data: countryConfirmedTimeSeries, // confirmed cases by country-state
+                    data: countryConfirmedTimeSeries,
                     globalCases: globalConfirmedTimeSeries
                 }
             }}
