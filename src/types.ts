@@ -6,9 +6,9 @@ export interface NewsData {
 }
 
 export interface CountryData {
-  today:Number, 
-  yesterday:Number,
-  newCases: Number
+  today:number, 
+  yesterday:number,
+  newCases: number
 }
 
 export interface IDataContext {
