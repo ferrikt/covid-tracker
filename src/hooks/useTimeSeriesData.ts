@@ -15,7 +15,6 @@ export const useTimeSeriesData = (
 
   let countryData = new Map();
  
-
   useEffect(() => {
 
     setIsLoading(true);
@@ -58,7 +57,7 @@ export const useTimeSeriesData = (
        for(let i=0;i<1000;i++) { //simulate delay for now
          console.log(i);
        }
-debugger;
+
        setIsLoading(false);
 
   },[url])

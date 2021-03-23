@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { useCountryDataCtx } from '../context/DataContext';
+import { useCountryDataCtx } from '../context/dataContext';
 import { Grid, Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
 import Loading from './Loading';
