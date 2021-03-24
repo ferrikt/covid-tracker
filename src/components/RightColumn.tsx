@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Grid, Heading, Text } from 'theme-ui';
+import { Grid } from 'theme-ui';
 
 import CasesList from './CasesList';
 interface IProps {
@@ -24,7 +24,7 @@ const RightColumn: React.SFC<IProps> = (props: IProps) => {
                 <CasesList tag="new" />
             </Grid>
 
-            <Grid sx={{ gridArea: 'Right', bg: 'black', gridTemplateRows: 'auto 2fr 6fr' }}>
+            <Grid sx={{ gridArea: 'Right', bg: 'black', gridTemplateRows: 'auto' }}>
                 <CasesList tag="new" />
             </Grid>
         </Grid>

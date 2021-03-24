@@ -5,22 +5,11 @@ import { useSelectCountryCtx } from '../context/selectContext';
 import { useCountryDataCtx } from '../context/dataContext';
 import { CountryData } from '../types';
 import Loading from './Loading';
+import { definePropertyName, pickColor } from '../utils/utils';
+
 interface IProps {
     tag: string;
 }
-
-const definePropertyName = (tag: string): string => {
-    switch (tag) {
-        case 'new':
-            return 'newCases';
-        case 'active':
-            return 'active';
-    }
-    return 'newCases';
-};
-
-const pickColor = (tag: string): string =>
-    tag === 'active' ? 'yellow.500' : tag === 'deaths' ? 'gray.500' : tag === 'recovered' ? 'green.500' : 'pink';
 
 const CasesList: React.SFC<IProps> = (props: IProps) => {
     const { isLoading, data } = useCountryDataCtx();
