@@ -5,11 +5,24 @@ import { useSelectCountryCtx } from '../context/selectContext';
 import { useCountryDataCtx } from '../context/dataContext';
 import { CountryData } from '../types';
 import Loading from './Loading';
-import { definePropertyName, pickColor } from '../utils/utils';
+//import { definePropertyName, pickColor } from '../utils/utils';
 
 interface IProps {
     tag: string;
 }
+
+export const definePropertyName = (tag: string): string => {
+    switch (tag) {
+        case 'new':
+            return 'newCases';
+        case 'active':
+            return 'active';
+    }
+    return 'newCases';
+};
+
+export const pickColor = (tag: string): string =>
+    tag === 'active' ? 'yellow' : tag === 'deaths' ? 'gray.500' : tag === 'recovered' ? 'green.500' : 'pink';
 
 const CasesList: React.SFC<IProps> = (props: IProps) => {
     const { isLoading, data } = useCountryDataCtx();
@@ -37,7 +50,7 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
             countryCount = value.newCases;
         }
     };
-
+    // debugger;
     data && data.forEach(logMapElements);
 
     let sortedData: Array<{ country: string; value: number }> = dataArray.sort((a, b) => b.value - a.value);
@@ -53,13 +66,19 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
                     border: '1px solid #363636'
                 }}
             >
-                <Heading color="white">{selectedCountry ? selectedCountry : 'Global'}</Heading>
-                <Heading color={pickColor(tag)}>
-                    {selectedCountry ? countryCount.toLocaleString() : globalCount.toLocaleString()}
-                </Heading>
-                <Heading>
-                    {tag} {' cases'}
-                </Heading>
+                {isLoading ? (
+                    <Loading />
+                ) : (
+                    <>
+                        <Heading color="white">{selectedCountry ? selectedCountry : 'Global'}</Heading>
+                        <Heading color={pickColor(tag)}>
+                            {selectedCountry ? countryCount.toLocaleString() : globalCount.toLocaleString()}
+                        </Heading>
+                        <Heading>
+                            {tag} {' cases'}
+                        </Heading>
+                    </>
+                )}
             </Flex>
             <Flex
                 sx={{

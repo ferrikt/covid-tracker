@@ -8,7 +8,10 @@ export interface NewsData {
 export interface CountryData {
   today:number, 
   yesterday:number,
-  newCases: number
+  newCases: number,
+  active: number, 
+  deaths: number,
+  recovered: number
 }
 
 export interface IDataContext {
