@@ -1,4 +1,3 @@
-
 const theme = {
     fonts: {
         body: 'Avenir Next W01,Avenir Next W00,Avenir Next,Avenir,Helvetica Neue,sans-serif',
@@ -14,9 +13,27 @@ const theme = {
         gray: {
             10: '#bdbdbd',
             50: '#f7fafc',
+            200: '#E2E8F0',
             400: '#A0AEC0',
-            500: '#718096',
-            200: '#E2E8F0'
+            500: '#718096'
+        },
+        pink: {
+            50: '#FFF5F7',
+            200: '#9AE6B4',
+            400: '#ED64A6',
+            500: '#D53F8C'
+        },
+        green: {
+            50: '#F0FFF4',
+            200: '#FBB6CE',
+            400: '#48BB78',
+            500: '#38A169'
+        },
+        purple: {
+            50: '#FAF5FF',
+            200: '#D6BCFA',
+            400: '#9F7AEA',
+            500: '#805AD5'
         }
     },
     fontSizes: {

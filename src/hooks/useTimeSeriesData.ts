@@ -12,7 +12,6 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
     let countryData = new Map();
 
     useEffect(() => {
-        debugger;
         setIsLoading(true);
         let glCases = 0;
         const url2 =
@@ -32,10 +31,7 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
                     countryData.set(countryName, {
                         today: Number(row[lastColumnName]),
                         yesterday: Number(row[prevColumnName]),
-                        newCases: Number(row[lastColumnName]) - Number(row[prevColumnName]),
-                        active: 0,
-                        deaths: 0,
-                        recovered: 0
+                        newCases: Number(row[lastColumnName]) - Number(row[prevColumnName])
                     });
                     glCases += Number(row[lastColumnName]);
                 } else {
@@ -68,7 +64,10 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
                     });
                 } else {
                     const countryCases = countryData.get(countryName);
-                    const { active, deaths, recovered } = countryCases;
+
+                    const active = countryCases.active ?? 0;
+                    const deaths = countryCases.deaths ?? 0;
+                    const recovered = countryCases.recovered ?? 0;
 
                     countryData.set(countryName, {
                         ...countryCases,
@@ -78,16 +77,12 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
                     });
                 }
             });
-            debugger;
+
             setCountriesData(countryData);
             setIsLoading(false);
         };
 
         setGlobalCases(glCases);
-
-        //  for(let i=0;i<1000;i++) { //simulate delay for now
-        //    console.log(i);
-        //  }
 
         fetchTimeSeries();
     }, [url]);

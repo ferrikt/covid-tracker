@@ -22,7 +22,7 @@ export const definePropertyName = (tag: string): string => {
 };
 
 export const pickColor = (tag: string): string =>
-    tag === 'active' ? 'yellow' : tag === 'deaths' ? 'gray.500' : tag === 'recovered' ? 'green.500' : 'pink';
+    tag === 'active' ? 'purple.400' : tag === 'deaths' ? 'gray.500' : tag === 'recovered' ? 'green.500' : 'pink.400';
 
 const CasesList: React.SFC<IProps> = (props: IProps) => {
     const { isLoading, data } = useCountryDataCtx();
@@ -50,7 +50,7 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
             countryCount = value.newCases;
         }
     };
-    // debugger;
+
     data && data.forEach(logMapElements);
 
     let sortedData: Array<{ country: string; value: number }> = dataArray.sort((a, b) => b.value - a.value);
@@ -94,10 +94,8 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
                     <List>
                         {sortedData.map((x) => (
                             <ListItem selected={selectedCountry === x.country}>
-                                <Text>
-                                    {x.country}{' '}
-                                    <span style={{ color: pickColor(tag) }}>{x.value.toLocaleString()}</span>
-                                </Text>
+                                <Text color="gray.100">{x.country}</Text>
+                                <Text color={pickColor(tag)}>{x.value.toLocaleString()}</Text>
                             </ListItem>
                         ))}
                     </List>
