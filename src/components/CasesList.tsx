@@ -17,7 +17,12 @@ export const definePropertyName = (tag: string): string => {
             return 'newCases';
         case 'active':
             return 'active';
+        case 'deaths':
+            return 'deaths';
+        case 'recovered':
+            return 'recovered';
     }
+
     return 'newCases';
 };
 
@@ -44,10 +49,10 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
             value: value[propertyName as keyof CountryData]
         });
 
-        globalCount += value.newCases;
+        globalCount += value[propertyName as keyof CountryData];
 
         if (key === selectedCountry) {
-            countryCount = value.newCases;
+            countryCount = value[propertyName as keyof CountryData];
         }
     };
 

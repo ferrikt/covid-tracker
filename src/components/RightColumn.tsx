@@ -25,7 +25,7 @@ const RightColumn: React.SFC<IProps> = (props: IProps) => {
             </Grid>
 
             <Grid sx={{ gridArea: 'Right', bg: 'black', gridTemplateRows: 'auto' }}>
-                <CasesList tag="active" />
+                <CasesList tag="recovered" />
             </Grid>
         </Grid>
     );
