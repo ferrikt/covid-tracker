@@ -80,9 +80,8 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
 
             setCountriesData(countryData);
             setIsLoading(false);
+            setGlobalCases(glCases);
         };
-
-        setGlobalCases(glCases);
 
         fetchTimeSeries();
     }, [url]);
