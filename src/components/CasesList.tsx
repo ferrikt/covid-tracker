@@ -77,7 +77,9 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
                     <>
                         <Heading color="white">{selectedCountry ? selectedCountry : 'Global'}</Heading>
                         <Heading color={pickColor(tag)}>
-                            {selectedCountry ? countryCount.toLocaleString() : globalCount.toLocaleString()}
+                            {selectedCountry
+                                ? countryCount.toLocaleString()
+                                : globalCount?.toLocaleString() ?? 'No data'}
                         </Heading>
                         <Heading>
                             {tag} {' cases'}
@@ -100,7 +102,7 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
                         {sortedData.map((x) => (
                             <ListItem selected={selectedCountry === x.country}>
                                 <Text color="gray.100">{x.country}</Text>
-                                <Text color={pickColor(tag)}>{x.value.toLocaleString()}</Text>
+                                <Text color={pickColor(tag)}>{x.value?.toLocaleString() ?? 'No data'}</Text>
                             </ListItem>
                         ))}
                     </List>

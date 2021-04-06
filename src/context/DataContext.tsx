@@ -1,6 +1,7 @@
 import React, { ReactNode, createContext, useContext } from 'react';
 import { TIMESERIES_CSV_URL } from '../constants';
 import { useTimeSeriesData } from '../hooks/useTimeSeriesData';
+import { useDailyUrl } from '../hooks/useDailyUrl';
 import { IDataContext } from '../types';
 const DataContext = createContext<Partial<IDataContext>>({});
 
@@ -11,8 +12,11 @@ interface DataContextProviderProps {
 const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) => {
     const error = 'this is error';
 
+    const dailyUrl = useDailyUrl();
+
     const [countryConfirmedTimeSeries, globalConfirmedTimeSeries, isLoading] = useTimeSeriesData(
-        TIMESERIES_CSV_URL.CONFIRMED
+        TIMESERIES_CSV_URL.CONFIRMED,
+        dailyUrl
     );
 
     return (

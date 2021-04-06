@@ -13,6 +13,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-leaflet": "^2.8.1",
     "@types/theme-ui": "^0.3.7",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "d3": "^6.5.0",
     "leaflet": "^1.7.1",

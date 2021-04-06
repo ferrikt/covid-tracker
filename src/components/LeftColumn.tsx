@@ -50,7 +50,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                 ) : (
                     <>
                         <Heading>Global cases</Heading>
-                        <Heading color="#e60000">{globalCases.toLocaleString()}</Heading>
+                        <Heading color="#e60000">{globalCases?.toLocaleString() ?? 'No data'}</Heading>
                     </>
                 )}
             </Flex>
@@ -74,7 +74,9 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                                     selected={selectedCountry === x.country}
                                 >
                                     <Text>
-                                        <span style={{ color: '#e60000' }}>{x.value.toLocaleString()} </span>
+                                        <span style={{ color: '#e60000' }}>
+                                            {x.value?.toLocaleString() ?? 'No data'}{' '}
+                                        </span>
                                         {x.country}
                                     </Text>
                                 </ListItem>

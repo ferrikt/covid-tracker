@@ -2,7 +2,10 @@ import * as d3 from 'd3';
 import { useEffect, useState } from 'react';
 import { CountryData } from '../types';
 
-export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null, Number, boolean] => {
+export const useTimeSeriesData = (
+    url: string,
+    daylyUrl: string
+): [Map<string, CountryData> | null, Number, boolean] => {
     const [countriesData, setCountriesData] = useState<Map<string, CountryData> | null>(null);
 
     const [isLoading, setIsLoading] = useState(true);
@@ -14,8 +17,8 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
     useEffect(() => {
         setIsLoading(true);
         let glCases = 0;
-        const url2 =
-            'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-23-2021.csv';
+        const url2 = daylyUrl;
+        //  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/02-04-2021.csv';
 
         const fetchTimeSeries = async () => {
             const loadedData = await d3.csv(url);
@@ -84,7 +87,7 @@ export const useTimeSeriesData = (url: string): [Map<string, CountryData> | null
         };
 
         fetchTimeSeries();
-    }, [url]);
+    }, [url, daylyUrl]);
 
     return [countriesData, globalCases, isLoading];
 };
