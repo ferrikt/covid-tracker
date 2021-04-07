@@ -1,17 +1,17 @@
 export interface NewsData {
-  title: string;
-  source: string;
-  date: string;
-  link: string;
+    title: string;
+    source: string;
+    date: string;
+    link: string;
 }
 
 export interface CountryData {
-  today:number, 
-  yesterday:number,
-  newCases: number,
-  active: number, 
-  deaths: number,
-  recovered: number
+    today: number;
+    yesterday: number;
+    newCases: number;
+    active: number;
+    deaths: number;
+    recovered: number;
 }
 
 export interface IDataContext {
@@ -20,7 +20,7 @@ export interface IDataContext {
         error: string;
         data: Map<string, CountryData> | null;
         globalCases: Number;
+        lastUpdated: string;
     };
 }
-export interface IProps {
-}
+export interface IProps {}

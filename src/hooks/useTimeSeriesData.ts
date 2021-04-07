@@ -5,19 +5,21 @@ import { CountryData } from '../types';
 export const useTimeSeriesData = (
     url: string,
     daylyUrl: string
-): [Map<string, CountryData> | null, Number, boolean] => {
+): [Map<string, CountryData> | null, Number, string, boolean] => {
     const [countriesData, setCountriesData] = useState<Map<string, CountryData> | null>(null);
 
     const [isLoading, setIsLoading] = useState(true);
 
     const [globalCases, setGlobalCases] = useState(0);
+    const [lastUpdated, setLastUpdated] = useState('');
 
     let countryData = new Map();
+    let updatedTime: string = '';
 
     useEffect(() => {
         setIsLoading(true);
         let glCases = 0;
-        const url2 = daylyUrl;
+        //  const url2 = daylyUrl;
         //  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/02-04-2021.csv';
 
         const fetchTimeSeries = async () => {
@@ -50,10 +52,14 @@ export const useTimeSeriesData = (
                 }
             });
 
-            const dailyData = await d3.csv(url2);
+            const dailyData = await d3.csv(daylyUrl);
 
             dailyData.forEach((row) => {
                 const countryName = row['Country_Region'];
+
+                if (!updatedTime) {
+                    updatedTime = row['Last_Update'] ? row['Last_Update'] : '';
+                }
 
                 const rowActive = Number(row['Active']) ? Number(row['Active']) : 0;
                 const rowDeaths = Number(row['Deaths']) ? Number(row['Deaths']) : 0;
@@ -84,10 +90,11 @@ export const useTimeSeriesData = (
             setCountriesData(countryData);
             setIsLoading(false);
             setGlobalCases(glCases);
+            setLastUpdated(updatedTime);
         };
 
         fetchTimeSeries();
     }, [url, daylyUrl]);
 
-    return [countriesData, globalCases, isLoading];
+    return [countriesData, globalCases, lastUpdated, isLoading];
 };

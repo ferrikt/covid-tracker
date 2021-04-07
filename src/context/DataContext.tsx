@@ -14,7 +14,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) =
 
     const dailyUrl = useDailyUrl();
 
-    const [countryConfirmedTimeSeries, globalConfirmedTimeSeries, isLoading] = useTimeSeriesData(
+    const [countryConfirmedTimeSeries, globalConfirmedTimeSeries, lastUpdated, isLoading] = useTimeSeriesData(
         TIMESERIES_CSV_URL.CONFIRMED,
         dailyUrl
     );
@@ -26,7 +26,8 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) =
                     isLoading,
                     error,
                     data: countryConfirmedTimeSeries,
-                    globalCases: globalConfirmedTimeSeries
+                    globalCases: globalConfirmedTimeSeries,
+                    lastUpdated
                 }
             }}
         >

@@ -10,7 +10,7 @@ import Loading from './Loading';
 import { IProps } from '../types';
 
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
-    const { isLoading, data, globalCases } = useCountryDataCtx();
+    const { isLoading, data, globalCases, lastUpdated } = useCountryDataCtx();
 
     const { selectedCountry, handleCountryClick } = useSelectCountryCtx();
 
@@ -100,7 +100,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                 ) : (
                     <>
                         <Heading sx={{ fontSize: 'md' }}>Last Updated at</Heading>
-                        <Heading>{}</Heading>
+                        <Heading>{lastUpdated?.toLocaleString() ?? 'No data'}</Heading>
                     </>
                 )}
             </Flex>
