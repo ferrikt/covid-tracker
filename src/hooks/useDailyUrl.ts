@@ -8,21 +8,16 @@ export const useDailyUrl = (): string => {
     useEffect(() => {
         const getFilesNames = (): string[] => {
             const today = new Date();
-            let files: string[] = [];
-            // const todayUrl = today.toISOString().split('T')[0];
-            // today.setDate(today.getDate() - 1);
-            // const ydayUrl = today.toISOString().split('T')[0];
-            // return [ydayUrl, todayUrl, '03-04-2021.csv'];
+            const todayStr = today.toISOString().split('T')[0];
+            today.setDate(today.getDate() - 1);
+            const ydayStr = today.toISOString().split('T')[0];
+            const todayArr = todayStr.split('-');
+            const ydayArr = ydayStr.split('-');
 
-            for (let i = 0; i < 7; i++) {
-                const year = today.getFullYear();
-                const month = (today.getMonth() + 1).toString().padStart(2, '0');
-                const date = today.getDate().toString().padStart(2, '0');
-                const fileName = `${month}-${date}-${year}.csv`;
-                files.push(fileName);
-                today.setDate(today.getDate() - 1);
-            }
-            return files;
+            return [
+                `${todayArr[2]}-${todayArr[1]}-${todayArr[0]}.csv`,
+                `${ydayArr[2]}-${ydayArr[1]}-${ydayArr[0]}.csv`
+            ];
         };
 
         const getUrl = async () => {
