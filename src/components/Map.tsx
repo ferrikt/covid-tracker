@@ -50,7 +50,11 @@ const Map: React.SFC<IProps> = (props: IProps) => {
         .scaleSqrt()
         .domain([0, getMax(dataArray, dataClass)])
         .range([0, 430000]);
-    debugger;
+
+    const filtered = dataArray?.filter((d) => d.value && d.lat && d.long);
+
+    console.log(filtered);
+
     return (
         <>
             <MapContainer center={[45.4, -75.7]} zoom={12} style={{ height: `100%`, width: '100%' }}>
@@ -62,19 +66,19 @@ const Map: React.SFC<IProps> = (props: IProps) => {
                     maxZoom={8}
                     minZoom={2}
                 />
-                {dataArray
-                    ?.filter((d) => d[dataClass])
+                {
                     //  .sort((a, b) => b[dataClass]! - a[dataClass]!)
-                    .map((d, i) => {
+                    filtered.map((d, i) => {
                         const radius = getRadius(d[dataClass] ?? 0);
                         return (
                             <Circle
-                                center={{ lat: d.lat, lng: d.lon }}
-                                radius={1}
+                                center={[d.lat, d.long]}
+                                radius={100}
                                 stroke={true}
-                                color={'whitesmoke'}
+                                color="red"
                                 // opacity={this.pickOpacity()}
                                 weight={1}
+                                key={i}
                             />
 
                             // <LeafletCircle
@@ -88,7 +92,8 @@ const Map: React.SFC<IProps> = (props: IProps) => {
                             //     color="whitesmoke"
                             // />
                         );
-                    })}
+                    })
+                }
             </MapContainer>
         </>
     );
