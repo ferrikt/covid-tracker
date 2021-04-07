@@ -14,8 +14,8 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
 
     const { selectedCountry, handleCountryClick } = useSelectCountryCtx();
 
-    let dataArray: Array<{ country: string; value: number; lat: string }> = [];
-    debugger;
+    let dataArray: Array<{ country: string; value: number; lat: number }> = [];
+
     const logMapElements = (value: any, key: string) => {
         dataArray.push({
             country: key,
@@ -26,7 +26,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
 
     data && data.forEach(logMapElements);
 
-    let sortedData: Array<{ country: string; value: number; lat: string }> = dataArray.sort(
+    let sortedData: Array<{ country: string; value: number; lat: number }> = dataArray.sort(
         (a, b) => b.value - a.value
     );
 

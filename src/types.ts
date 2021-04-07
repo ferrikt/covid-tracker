@@ -12,6 +12,8 @@ export interface CountryData {
     active: number;
     deaths: number;
     recovered: number;
+    lat: number;
+    long: number;
 }
 
 export interface IDataContext {

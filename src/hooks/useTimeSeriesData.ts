@@ -35,8 +35,8 @@ export const useTimeSeriesData = (
                         today: Number(row[lastColumnName]),
                         yesterday: Number(row[prevColumnName]),
                         newCases: Number(row[lastColumnName]) - Number(row[prevColumnName]),
-                        lat: row['Lat'],
-                        long: row['Long']
+                        lat: Number(row['Lat']) ? Number(row['Lat']) : 0,
+                        long: Number(row['Long']) ? Number(row['Long']) : 0
                     });
                     glCases += Number(row[lastColumnName]);
                 } else {
