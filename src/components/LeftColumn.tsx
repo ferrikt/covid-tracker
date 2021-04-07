@@ -14,18 +14,21 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
 
     const { selectedCountry, handleCountryClick } = useSelectCountryCtx();
 
-    let dataArray: Array<{ country: string; value: number }> = [];
-
+    let dataArray: Array<{ country: string; value: number; lat: string }> = [];
+    debugger;
     const logMapElements = (value: any, key: string) => {
         dataArray.push({
             country: key,
-            value: Number(value.today)
+            value: Number(value.today),
+            lat: value.lat
         });
     };
 
     data && data.forEach(logMapElements);
 
-    let sortedData: Array<{ country: string; value: number }> = dataArray.sort((a, b) => b.value - a.value);
+    let sortedData: Array<{ country: string; value: number; lat: string }> = dataArray.sort(
+        (a, b) => b.value - a.value
+    );
 
     return (
         <Grid
@@ -77,7 +80,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                                         <span style={{ color: '#e60000' }}>
                                             {x.value?.toLocaleString() ?? 'No data'}{' '}
                                         </span>
-                                        {x.country}
+                                        {x.country} {x.lat}
                                     </Text>
                                 </ListItem>
                             ))}

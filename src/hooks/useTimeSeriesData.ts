@@ -19,8 +19,6 @@ export const useTimeSeriesData = (
     useEffect(() => {
         setIsLoading(true);
         let glCases = 0;
-        //  const url2 = daylyUrl;
-        //  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/02-04-2021.csv';
 
         const fetchTimeSeries = async () => {
             const loadedData = await d3.csv(url);
@@ -36,7 +34,9 @@ export const useTimeSeriesData = (
                     countryData.set(countryName, {
                         today: Number(row[lastColumnName]),
                         yesterday: Number(row[prevColumnName]),
-                        newCases: Number(row[lastColumnName]) - Number(row[prevColumnName])
+                        newCases: Number(row[lastColumnName]) - Number(row[prevColumnName]),
+                        lat: row['Lat'],
+                        long: row['Long']
                     });
                     glCases += Number(row[lastColumnName]);
                 } else {
@@ -69,7 +69,9 @@ export const useTimeSeriesData = (
                     countryData.set(countryName, {
                         active: rowActive,
                         deaths: rowDeaths,
-                        recovered: rowRecovered
+                        recovered: rowRecovered,
+                        lat: row['Lat'],
+                        long: row['Long_']
                     });
                 } else {
                     const countryCases = countryData.get(countryName);
