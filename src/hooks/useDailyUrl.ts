@@ -34,22 +34,20 @@ export const useDailyUrl = (): string => {
 
         async function getUrl() {
             const files = getFilesNames();
-            let latestUrl = '';
+
             for (const file of files) {
                 try {
                     const url = DAILY_BASE_URL + file;
                     const res = await Axios.get(url);
                     const status = res.status;
                     if (status === 200) {
-                        latestUrl = url;
+                        setDataUrl(url);
                         break;
                     }
                 } catch {
                     // csv files are not found. handle this error.
                 }
             }
-
-            setDataUrl(latestUrl);
         }
 
         getUrl();
