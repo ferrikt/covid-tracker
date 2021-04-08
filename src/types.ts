@@ -26,3 +26,11 @@ export interface IDataContext {
     };
 }
 export interface IProps {}
+
+export type TCountryData = {
+    country: string;
+    value: number;
+    lat: number;
+    long: number;
+    [index: string]: any;
+};

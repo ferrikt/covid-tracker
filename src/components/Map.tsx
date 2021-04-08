@@ -1,28 +1,20 @@
 import * as React from 'react';
 import * as d3 from 'd3';
 import { MapContainer, Marker, Circle, TileLayer } from 'react-leaflet';
-
+import { IProps, TCountryData } from '../types';
 import { useCountryDataCtx } from '../context/dataContext';
 import { useSelectCountryCtx } from '../context/selectContext';
+import { iterateViaMap } from '../utils/utils';
 
-interface IProps {}
-
-const getMax = (
-    data: Array<{ country: string; value: number; lat: number; long: number; [index: string]: any }> | null,
-    dataClass: string
-) => {
+const getMax = (data: Array<TCountryData> | null) => {
     if (data) {
-        return dataClass === 'confirmed'
-            ? d3.max(data, (D) => D.confirmed ?? 0) ?? 0
-            : dataClass === 'deaths'
-            ? d3.max(data, (D) => D.deaths ?? 0) ?? 0
-            : dataClass === 'active'
-            ? d3.max(data, (D) => D.active ?? 0) ?? 0
-            : d3.max(data, (D) => D.newCases ?? 0) ?? 0;
+        return d3.max(data, (D) => D.value ?? 0) ?? 0;
     } else {
         return 0;
     }
 };
+
+const color = 'red';
 
 const Map: React.SFC<IProps> = (props: IProps) => {
     const { selectedCountry, setSelectedCountry } = useSelectCountryCtx();
@@ -30,25 +22,11 @@ const Map: React.SFC<IProps> = (props: IProps) => {
 
     const dataClass: string = 'active';
 
-    let dataArray: Array<{ country: string; value: number; lat: number; long: number; [index: string]: any }> = [];
+    let dataArray: Array<TCountryData> = iterateViaMap(data, dataClass);
 
-    //const myObj: { [index: string]: any } = {};
-
-    const logMapElements = (value: any, key: string) => {
-        dataArray.push({
-            country: key,
-            value: value[dataClass],
-            lat: value.lat,
-            long: value.long
-        });
-    };
-
-    data && data.forEach(logMapElements);
-
-    // Function that gets the radius.
     const getRadius = d3
         .scaleSqrt()
-        .domain([0, getMax(dataArray, dataClass)])
+        .domain([0, getMax(dataArray)])
         .range([0, 430000]);
 
     const filtered = dataArray?.filter((d) => d.value && d.lat && d.long);
@@ -67,13 +45,13 @@ const Map: React.SFC<IProps> = (props: IProps) => {
                 minZoom={2}
             />
             {filtered.map((d, i) => {
-                const radius = getRadius(d[dataClass] ?? 0);
+                const radius = getRadius(d.value) ?? 0;
                 return (
                     <Circle
                         center={{ lat: d.lat, lng: d.long }}
-                        radius={900}
+                        radius={radius}
                         stroke={true}
-                        color="red"
+                        color={color}
                         weight={1}
                         key={i}
                     />
