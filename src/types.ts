@@ -34,3 +34,8 @@ export type TCountryData = {
     long: number;
     [index: string]: any;
 };
+
+export interface MapProps {
+    center: [number, number];
+    zoom: number;
+}

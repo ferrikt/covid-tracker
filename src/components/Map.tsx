@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import * as d3 from 'd3';
-import { MapContainer, Marker, Circle, TileLayer } from 'react-leaflet';
-import { IProps, TCountryData } from '../types';
+import { MapContainer, Tooltip, Circle, TileLayer, useMap } from 'react-leaflet';
+import { IProps, TCountryData, MapProps } from '../types';
 import { useCountryDataCtx } from '../context/dataContext';
 import { useSelectCountryCtx } from '../context/selectContext';
 import { iterateViaMap } from '../utils/utils';
+import { Heading, Text } from 'theme-ui';
 
 const getMax = (data: Array<TCountryData> | null) => {
     if (data) {
@@ -15,12 +16,17 @@ const getMax = (data: Array<TCountryData> | null) => {
 };
 
 const color = 'red';
+const dataClass: string = 'active';
+
+function ChangeView(props: MapProps) {
+    const map = useMap();
+    map.setView(props.center, props.zoom);
+    return null;
+}
 
 const Map: React.SFC<IProps> = (props: IProps) => {
     const { selectedCountry, setSelectedCountry } = useSelectCountryCtx();
-    const { isLoading, data, globalCases, lastUpdated } = useCountryDataCtx();
-
-    const dataClass: string = 'active';
+    const { data } = useCountryDataCtx();
 
     let dataArray: Array<TCountryData> = iterateViaMap(data, dataClass);
 
@@ -36,8 +42,13 @@ const Map: React.SFC<IProps> = (props: IProps) => {
     const lat = selectedCountryData ? selectedCountryData.lat : 20;
     const long = selectedCountryData ? selectedCountryData.long : 10;
 
+    let zoom: number = selectedCountry ? 3 : 2;
+
+    const position: [number, number] = [lat, long];
+
     return (
-        <MapContainer center={{ lat: lat, lng: long }} zoom={2} style={{ height: `100%`, width: '100%' }}>
+        <MapContainer center={position} zoom={zoom} style={{ height: `100%`, width: '100%' }} scrollWheelZoom={false}>
+            <ChangeView center={position} zoom={zoom} />
             <TileLayer
                 attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
                 url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -54,7 +65,13 @@ const Map: React.SFC<IProps> = (props: IProps) => {
                         color={color}
                         weight={1}
                         key={i}
-                    />
+                    >
+                        <Tooltip sticky={true} direction="left" offset={[-2, 0]}>
+                            <Heading color={color}>{d.country}</Heading>
+
+                            <Text> Total Cases:{d.value?.toLocaleString()} </Text>
+                        </Tooltip>
+                    </Circle>
                 );
             })}
         </MapContainer>
