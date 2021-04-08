@@ -6,7 +6,8 @@ to do
 5) add comboboxes with ability to chose option for cases
 6) check if we really need all types 
 7) check id types can be replaced with interfaces - difference between that 
-
+8) all hardcoded styles to relative units
+9) add country search
 
 
 

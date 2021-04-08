@@ -76,12 +76,15 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                                     onClick={() => handleCountryClick(x.country)}
                                     selected={selectedCountry === x.country}
                                 >
-                                    <Text>
-                                        <span style={{ color: '#e60000' }}>
-                                            {x.value?.toLocaleString() ?? 'No data'}{' '}
-                                        </span>
-                                        {x.country} {x.lat}
+                                    <Text
+                                        sx={{
+                                            color: '#e60000',
+                                            marginRight: 2
+                                        }}
+                                    >
+                                        {x.value?.toLocaleString() ?? 'No data'}
                                     </Text>
+                                    <Text> {x.country}</Text>
                                 </ListItem>
                             ))}
                         </List>

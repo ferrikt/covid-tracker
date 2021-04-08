@@ -101,7 +101,9 @@ const CasesList: React.SFC<IProps> = (props: IProps) => {
                     <List>
                         {sortedData.map((x) => (
                             <ListItem selected={selectedCountry === x.country}>
-                                <Text color="gray.100">{x.country}</Text>
+                                <Text sx={{ marginRight: 2 }} color="gray.100">
+                                    {x.country}
+                                </Text>
                                 <Text color={pickColor(tag)}>{x.value?.toLocaleString() ?? 'No data'}</Text>
                             </ListItem>
                         ))}
