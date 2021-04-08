@@ -53,49 +53,33 @@ const Map: React.SFC<IProps> = (props: IProps) => {
 
     const filtered = dataArray?.filter((d) => d.value && d.lat && d.long);
 
-    console.log(filtered);
+    const selectedCountryData = filtered?.find((x) => x.country === selectedCountry);
+
+    const lat = selectedCountryData ? selectedCountryData.lat : 20;
+    const long = selectedCountryData ? selectedCountryData.long : 10;
 
     return (
-        <>
-            <MapContainer center={[45.4, -75.7]} zoom={12} style={{ height: `100%`, width: '100%' }}>
-                <TileLayer
-                    // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
-                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                    maxZoom={8}
-                    minZoom={2}
-                />
-                {
-                    //  .sort((a, b) => b[dataClass]! - a[dataClass]!)
-                    filtered.map((d, i) => {
-                        const radius = getRadius(d[dataClass] ?? 0);
-                        return (
-                            <Circle
-                                center={[d.lat, d.long]}
-                                radius={100}
-                                stroke={true}
-                                color="red"
-                                // opacity={this.pickOpacity()}
-                                weight={1}
-                                key={i}
-                            />
-
-                            // <LeafletCircle
-                            //     key={i}
-                            //     d={d}
-                            //     radius={radius && radius > 0 ? radius : 0}
-                            //     selected={selectedCountry}
-                            //     setSelected={setSelectedCountry}
-                            //     setViewport={setViewport}
-                            //     dataClass={dataClass}
-                            //     color="whitesmoke"
-                            // />
-                        );
-                    })
-                }
-            </MapContainer>
-        </>
+        <MapContainer center={{ lat: lat, lng: long }} zoom={2} style={{ height: `100%`, width: '100%' }}>
+            <TileLayer
+                attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
+                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                maxZoom={8}
+                minZoom={2}
+            />
+            {filtered.map((d, i) => {
+                const radius = getRadius(d[dataClass] ?? 0);
+                return (
+                    <Circle
+                        center={{ lat: d.lat, lng: d.long }}
+                        radius={900}
+                        stroke={true}
+                        color="red"
+                        weight={1}
+                        key={i}
+                    />
+                );
+            })}
+        </MapContainer>
     );
 };
 

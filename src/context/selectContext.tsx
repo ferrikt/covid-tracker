@@ -16,7 +16,6 @@ const SelectContextProvider: React.FC<DataContextProviderProps> = ({ children })
     const [selectedCountry, setSelectedCountry] = useState('');
 
     const handleCountryClick = (countryName: string) => {
-        console.log(`countryName=${countryName}`);
         setSelectedCountry((prev) => (prev === countryName ? '' : countryName));
     };
 
