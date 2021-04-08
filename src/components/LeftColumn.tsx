@@ -8,27 +8,30 @@ import { Grid, Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
 import Loading from './Loading';
 import { IProps } from '../types';
+import { iterateViaMap } from '../utils/utils';
 
 const LeftColumn: React.SFC<IProps> = (props: IProps) => {
     const { isLoading, data, globalCases, lastUpdated } = useCountryDataCtx();
 
     const { selectedCountry, handleCountryClick } = useSelectCountryCtx();
 
-    let dataArray: Array<{ country: string; value: number; lat: number }> = [];
+    let dataArray: Array<{ country: string; value: number; lat: number }> = iterateViaMap(data, 'today');
 
-    const logMapElements = (value: any, key: string) => {
-        dataArray.push({
-            country: key,
-            value: Number(value.today),
-            lat: value.lat
-        });
-    };
+    // const logMapElements = (value: any, key: string) => {
+    //     dataArray.push({
+    //         country: key,
+    //         value: Number(value.today),
+    //         lat: value.lat
+    //     });
+    // };
 
-    data && data.forEach(logMapElements);
+    // data && data.forEach(logMapElements);
 
     let sortedData: Array<{ country: string; value: number; lat: number }> = dataArray.sort(
         (a, b) => b.value - a.value
     );
+
+    const selectedCountryObj = dataArray.find((x) => x.country === selectedCountry);
 
     return (
         <Grid
@@ -52,8 +55,14 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                     <Loading />
                 ) : (
                     <>
-                        <Heading>Global cases</Heading>
-                        <Heading color="#e60000">{globalCases?.toLocaleString() ?? 'No data'}</Heading>
+                        <Heading> {selectedCountry ? selectedCountry : 'Global'} </Heading>
+                        <Heading color="#e60000">
+                            {selectedCountry === ''
+                                ? globalCases?.toLocaleString() ?? 'No data'
+                                : selectedCountryObj?.value.toLocaleString()}
+
+                            {}
+                        </Heading>
                     </>
                 )}
             </Flex>
