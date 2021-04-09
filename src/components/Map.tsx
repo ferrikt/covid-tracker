@@ -57,7 +57,7 @@ const Map: React.SFC<IProps> = (props: IProps) => {
                 maxZoom={8}
                 minZoom={2}
             />
-            <Marker position={position} icon={icon}></Marker>
+            {selectedCountry && <Marker position={position} icon={icon}></Marker>}
             {filtered.map((d, i) => {
                 const radius = getRadius(d.value) ?? 0;
                 return (
