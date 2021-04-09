@@ -1,11 +1,12 @@
 import React from 'react';
 import * as d3 from 'd3';
-import { MapContainer, Tooltip, Circle, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, Tooltip, Circle, TileLayer, useMap, Marker } from 'react-leaflet';
 import { IProps, TCountryData, MapProps } from '../types';
 import { useCountryDataCtx } from '../context/dataContext';
 import { useSelectCountryCtx } from '../context/selectContext';
 import { iterateViaMap } from '../utils/utils';
 import { Heading, Text } from 'theme-ui';
+import { divIcon } from 'leaflet';
 
 const getMax = (data: Array<TCountryData> | null) => {
     if (data) {
@@ -42,9 +43,10 @@ const Map: React.SFC<IProps> = (props: IProps) => {
     const lat = selectedCountryData ? selectedCountryData.lat : 20;
     const long = selectedCountryData ? selectedCountryData.long : 10;
 
-    let zoom: number = selectedCountry ? 3 : 2;
+    let zoom: number = selectedCountry ? 2 : 2;
 
     const position: [number, number] = [lat, long];
+    const icon = divIcon({ className: 'css-icon', html: '<div class="gps_ring"></div>', iconSize: [50, 50] });
 
     return (
         <MapContainer center={position} zoom={zoom} style={{ height: `100%`, width: '100%' }} scrollWheelZoom={false}>
@@ -55,6 +57,7 @@ const Map: React.SFC<IProps> = (props: IProps) => {
                 maxZoom={8}
                 minZoom={2}
             />
+            <Marker position={position} icon={icon}></Marker>
             {filtered.map((d, i) => {
                 const radius = getRadius(d.value) ?? 0;
                 return (

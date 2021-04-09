@@ -7,7 +7,10 @@ to do
 6) check if we really need all types 
 7) check id types can be replaced with interfaces - difference between that 
 8) all hardcoded styles to relative units
-9) add country search
+9) add country search 
+
+
+10) add amount of all countries
 
 
 
