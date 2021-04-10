@@ -11,10 +11,11 @@ const RightColumn: React.SFC<IProps> = (props: IProps) => {
         <Grid
             sx={{
                 gridArea: 'right',
-                border: '1px solid #363636',
+                border: '1px solid',
+                borderColor: 'gray.700',
                 marginLeft: '10px',
                 marginRight: '10px',
-                background: '#222',
+                background: 'gray.600',
                 gap: 1,
                 gridTemplate: `"Left Right" 6fr
                 "Left Right" 6fr`

@@ -26,7 +26,8 @@ const CenterColumn: React.SFC<IProps> = (props: IProps) => {
                     <Flex
                         sx={{
                             flexDirection: 'column',
-                            border: '1px solid #363636'
+                            border: '1px solid',
+                            borderColor: 'gray.700'
                         }}
                     >
                         <Map />
@@ -42,7 +43,8 @@ const CenterColumn: React.SFC<IProps> = (props: IProps) => {
                         <Flex
                             sx={{
                                 background: '#222',
-                                border: '1px solid #363636',
+                                border: '1px solid',
+                                borderColor: 'gray.700',
                                 marginRight: '10px',
                                 padding: 10,
                                 alignItems: 'center',

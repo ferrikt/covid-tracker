@@ -32,8 +32,9 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'column',
-                    background: '#222',
-                    border: '1px solid #363636',
+                    backgroundColor: 'gray.600',
+                    border: '1px solid',
+                    borderColor: 'gray.700',
                     padding: '10px 0 10px 0'
                 }}
             >
@@ -42,7 +43,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                 ) : (
                     <>
                         <Heading> {selectedCountry ? selectedCountry : 'Global Cases'} </Heading>
-                        <Heading color="#e60000">
+                        <Heading color="red">
                             {selectedCountry === ''
                                 ? globalCases?.toLocaleString() ?? 'No data'
                                 : selectedCountryObj?.value.toLocaleString()}
@@ -57,8 +58,9 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                 sx={{
                     overflowY: 'scroll',
                     flexDirection: 'column',
-                    background: '#222',
-                    border: '1px solid #363636',
+                    backgroundColor: 'gray.600',
+                    border: '1px solid',
+                    borderColor: 'gray.700',
                     alignItems: 'center'
                 }}
             >
@@ -77,7 +79,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                                 >
                                     <Text
                                         sx={{
-                                            color: '#e60000',
+                                            color: 'red',
                                             marginRight: 2
                                         }}
                                     >
@@ -93,8 +95,9 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
 
             <Flex
                 sx={{
-                    background: '#222',
-                    border: '1px solid #363636',
+                    backgroundColor: 'gray.600',
+                    border: '1px solid',
+                    borderColor: 'gray.700',
                     flexDirection: 'column',
                     padding: 10
                 }}

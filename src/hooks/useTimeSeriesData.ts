@@ -16,6 +16,7 @@ export const useTimeSeriesData = (
     let countryData = new Map();
 
     useEffect(() => {
+        debugger;
         setIsLoading(true);
         let glCases = 0;
         let updatedTime: string = '';
@@ -95,7 +96,7 @@ export const useTimeSeriesData = (
             setLastUpdated(updatedTime);
         };
 
-        fetchTimeSeries();
+        if (daylyUrl) fetchTimeSeries();
     }, [url, daylyUrl]);
 
     return [countriesData, globalCases, lastUpdated, isLoading];
