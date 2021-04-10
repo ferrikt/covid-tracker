@@ -1,5 +1,3 @@
-//import { jsx } from "theme-ui";
-
 import * as React from 'react';
 
 import { useCountryDataCtx } from '../context/dataContext';
@@ -15,21 +13,9 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
 
     const { selectedCountry, handleCountryClick } = useSelectCountryCtx();
 
-    let dataArray: Array<{ country: string; value: number; lat: number }> = iterateViaMap(data, 'today');
+    let dataArray: Array<{ country: string; value: number }> = iterateViaMap(data, 'today');
 
-    // const logMapElements = (value: any, key: string) => {
-    //     dataArray.push({
-    //         country: key,
-    //         value: Number(value.today),
-    //         lat: value.lat
-    //     });
-    // };
-
-    // data && data.forEach(logMapElements);
-
-    let sortedData: Array<{ country: string; value: number; lat: number }> = dataArray.sort(
-        (a, b) => b.value - a.value
-    );
+    let sortedData: Array<{ country: string; value: number }> = dataArray.sort((a, b) => b.value - a.value);
 
     const selectedCountryObj = dataArray.find((x) => x.country === selectedCountry);
 
@@ -38,7 +24,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
             sx={{
                 gridTemplateRows: '1fr 15fr 2fr',
                 gridArea: 'left',
-                marginLeft: '10px'
+                marginLeft: 10
             }}
         >
             <Flex
@@ -55,7 +41,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                     <Loading />
                 ) : (
                     <>
-                        <Heading> {selectedCountry ? selectedCountry : 'Global'} </Heading>
+                        <Heading> {selectedCountry ? selectedCountry : 'Global Cases'} </Heading>
                         <Heading color="#e60000">
                             {selectedCountry === ''
                                 ? globalCases?.toLocaleString() ?? 'No data'
@@ -72,13 +58,17 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                     overflowY: 'scroll',
                     flexDirection: 'column',
                     background: '#222',
-                    border: '1px solid #363636'
+                    border: '1px solid #363636',
+                    alignItems: 'center'
                 }}
             >
                 {isLoading ? (
                     <Loading />
                 ) : (
-                    <Flex>
+                    <>
+                        <Heading sx={{ fontSize: 'md', marginTop: 2 }}>Cases by</Heading>
+                        <Heading sx={{ fontSize: 'xs' }}>Country/Region/Sovereignty</Heading>
+
                         <List>
                             {sortedData.map((x) => (
                                 <ListItem
@@ -97,7 +87,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                                 </ListItem>
                             ))}
                         </List>
-                    </Flex>
+                    </>
                 )}
             </Flex>
 
@@ -106,17 +96,21 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                     background: '#222',
                     border: '1px solid #363636',
                     flexDirection: 'column',
-                    paddingLeft: '10px',
-                    paddingTop: '10px'
+                    padding: 10
                 }}
             >
                 {isLoading ? (
                     <Loading />
                 ) : (
-                    <>
-                        <Heading sx={{ fontSize: 'md' }}>Last Updated at</Heading>
-                        <Heading>{lastUpdated?.toLocaleString() ?? 'No data'}</Heading>
-                    </>
+                    <Flex
+                        sx={{
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Heading sx={{ fontSize: 'xs' }}>Last Updated at</Heading>
+                        <Heading sx={{ fontSize: 'md' }}>{lastUpdated?.toLocaleString() ?? 'No data'}</Heading>
+                    </Flex>
                 )}
             </Flex>
         </Grid>
