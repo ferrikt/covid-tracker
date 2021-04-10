@@ -1,25 +1,76 @@
 import * as React from 'react';
-import { Grid, Flex } from 'theme-ui';
+import { Grid, Flex, Heading, Text } from 'theme-ui';
+import { useCountryDataCtx } from '../context/dataContext';
 import News from './News';
 import Map from './Map';
+import Loading from './Loading';
 
 interface IProps {}
 
-const CenterColumn: React.SFC<IProps> = (props: IProps) => (
-    <Grid
-        sx={{
-            gridArea: 'center',
-            border: '1px solid #363636',
-            marginLeft: '10px',
-            background: '#222',
-            gridTemplateRows: 'auto 250px'
-        }}
-    >
-        <Flex sx={{ flexDirection: 'column' }}>
-            <Map />
-        </Flex>
-        <News />
-    </Grid>
-);
+const CenterColumn: React.SFC<IProps> = (props: IProps) => {
+    const { data, isLoading } = useCountryDataCtx();
+
+    return (
+        <>
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <Grid
+                    sx={{
+                        gridArea: 'center',
+                        background: 'black',
+                        marginLeft: 10,
+                        gridTemplateRows: 'auto 80px'
+                    }}
+                >
+                    <Flex
+                        sx={{
+                            flexDirection: 'column',
+                            border: '1px solid #363636'
+                        }}
+                    >
+                        <Map />
+                    </Flex>
+
+                    <Flex
+                        sx={{
+                            flexDirection: 'row',
+                            background: 'black',
+                            gridTemplateColumns: '6fr 9fr'
+                        }}
+                    >
+                        <Flex
+                            sx={{
+                                background: '#222',
+                                border: '1px solid #363636',
+                                marginRight: '10px',
+                                padding: 10,
+                                alignItems: 'center',
+                                flexDirection: 'column'
+                            }}
+                        >
+                            <Heading
+                                sx={{
+                                    fontSize: '3xl',
+                                    fontWeight: 'bold'
+                                }}
+                            >
+                                {data?.size}
+                            </Heading>
+                            <Text
+                                sx={{
+                                    fontSize: 'xs'
+                                }}
+                            >
+                                countries/regions
+                            </Text>
+                        </Flex>
+                        <News />
+                    </Flex>
+                </Grid>
+            )}
+        </>
+    );
+};
 
 export default CenterColumn;

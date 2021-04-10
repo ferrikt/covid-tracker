@@ -12,13 +12,14 @@ const News: React.SFC<IProps> = () => {
     ) : (
         <Flex
             sx={{
-                flexDirection: 'column',
+                flexDirection: 'row',
+                background: '#222',
                 p: 2
             }}
         >
             <Heading>Covid news</Heading>
 
-            {newsData && newsData.length > 0 && (
+            {/* {newsData && newsData.length > 0 && (
                 <Flex
                     sx={{
                         overflowY: 'scroll',
@@ -26,12 +27,12 @@ const News: React.SFC<IProps> = () => {
                     }}
                 >
                     {newsData.map((news, i) => (
-                        <Box
+                        <Flex
                             sx={{
                                 border: '1px gray solid',
                                 borderRadius: '5px',
-                                p: 2,
-                                display: 'flex'
+                                p: 2
+                                // display: 'flex'
                             }}
                         >
                             <Link key={i} href={news.link} target="_blank" sx={{ textDecoration: 'none' }}>
@@ -49,10 +50,10 @@ const News: React.SFC<IProps> = () => {
                                     {news.source} | {news.date}
                                 </Text>
                             </Link>
-                        </Box>
+                        </Flex>
                     ))}
                 </Flex>
-            )}
+            )} */}
         </Flex>
     );
 };
