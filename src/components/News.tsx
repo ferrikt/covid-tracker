@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Heading, Text, Box, Flex } from 'theme-ui';
+import { Heading, Flex } from 'theme-ui';
 import { useNewsData } from '../hooks/useNewsData';
 import Loading from './Loading';
 

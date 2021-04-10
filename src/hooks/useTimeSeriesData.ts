@@ -14,11 +14,11 @@ export const useTimeSeriesData = (
     const [lastUpdated, setLastUpdated] = useState('');
 
     let countryData = new Map();
-    let updatedTime: string = '';
 
     useEffect(() => {
         setIsLoading(true);
         let glCases = 0;
+        let updatedTime: string = '';
 
         const fetchTimeSeries = async () => {
             const loadedData = await d3.csv(url);

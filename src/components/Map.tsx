@@ -26,7 +26,7 @@ function ChangeView(props: MapProps) {
 }
 
 const Map: React.SFC<IProps> = (props: IProps) => {
-    const { selectedCountry, setSelectedCountry } = useSelectCountryCtx();
+    const { selectedCountry } = useSelectCountryCtx();
     const { data } = useCountryDataCtx();
 
     let dataArray: Array<TCountryData> = iterateViaMap(data, dataClass);

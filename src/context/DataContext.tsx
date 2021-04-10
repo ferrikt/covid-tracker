@@ -14,6 +14,8 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) =
 
     const dailyUrl = useDailyUrl();
 
+    console.log(`dailyUrl=${dailyUrl}`);
+
     const [countryConfirmedTimeSeries, globalConfirmedTimeSeries, lastUpdated, isLoading] = useTimeSeriesData(
         TIMESERIES_CSV_URL.CONFIRMED,
         dailyUrl

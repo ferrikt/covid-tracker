@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Grid, Heading, Text } from 'theme-ui';
+import { Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
 import { useSelectCountryCtx } from '../context/selectContext';
 import { useCountryDataCtx } from '../context/dataContext';
