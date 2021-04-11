@@ -67,7 +67,7 @@ const CenterColumn: React.SFC<IProps> = (props: IProps) => {
                                 countries/regions
                             </Text>
                         </Flex>
-                        <News />
+                        {/* <News /> */}
                     </Flex>
                 </Grid>
             )}
