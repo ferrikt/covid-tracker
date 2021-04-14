@@ -1,6 +1,8 @@
 Project for learning purposes, it is a COVID-19 TRACKER project using `React` with `Typescript`.
 
-A dashboard to visualize the activity of COVID-19 around the world.
+Coronavirus dashboard offers a real-time window on a global pandemic
+
+
 
 Check it here: https://ferrikt.github.io/covid-tracker/
 
