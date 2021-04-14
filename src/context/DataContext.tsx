@@ -12,7 +12,7 @@ interface DataContextProviderProps {
 const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }) => {
     const error = 'this is error';
 
-    const dailyUrl = useDailyUrl(); //`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-09-2021.csv`;
+    const dailyUrl = useDailyUrl();
 
     console.log(`dailyUrl=${dailyUrl}`);
 
