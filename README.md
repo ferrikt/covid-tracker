@@ -1,6 +1,6 @@
 Project for learning purposes, it is a COVID-19 TRACKER project using `React` with `Typescript`.
 
-Coronavirus dashboard offers a real-time window on a global pandemic
+Coronavirus dashboard offers a real-time window on a global pandemic - view of coronavirus cases as they climb, by location.
 
 
 
