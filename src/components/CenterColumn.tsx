@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Grid, Flex, Heading, Text } from 'theme-ui';
 import { useCountryDataCtx } from '../context/DataContext';
-import News from './News';
 import Map from './Map';
 import Loading from './Loading';
 

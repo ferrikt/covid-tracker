@@ -13,10 +13,10 @@ export const useTimeSeriesData = (
     const [globalCases, setGlobalCases] = useState(0);
     const [lastUpdated, setLastUpdated] = useState('');
 
-    let countryData = new Map();
+
 
     useEffect(() => {
-        debugger;
+        let countryData = new Map();
         setIsLoading(true);
         let glCases = 0;
         let updatedTime: string = '';
