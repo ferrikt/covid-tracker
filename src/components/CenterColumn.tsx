@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Grid, Flex, Heading, Text } from 'theme-ui';
-import { useCountryDataCtx } from '../context/dataContext';
+import { useCountryDataCtx } from '../context/DataContext';
 import News from './News';
 import Map from './Map';
 import Loading from './Loading';
 
-interface IProps {}
+interface IProps { }
 
 const CenterColumn: React.SFC<IProps> = (props: IProps) => {
     const { data, isLoading } = useCountryDataCtx();

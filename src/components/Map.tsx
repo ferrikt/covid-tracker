@@ -2,7 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import { MapContainer, Tooltip, Circle, TileLayer, useMap, Marker } from 'react-leaflet';
 import { IProps, TCountryData, MapProps } from '../types';
-import { useCountryDataCtx } from '../context/dataContext';
+import { useCountryDataCtx } from '../context/DataContext';
 import { useSelectCountryCtx } from '../context/selectContext';
 import { iterateViaMap } from '../utils/utils';
 import { Heading, Text } from 'theme-ui';

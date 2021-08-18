@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
 import { useSelectCountryCtx } from '../context/selectContext';
-import { useCountryDataCtx } from '../context/dataContext';
+import { useCountryDataCtx } from '../context/DataContext';
 import { CountryData } from '../types';
 import Loading from './Loading';
 //import { definePropertyName, pickColor } from '../utils/utils';

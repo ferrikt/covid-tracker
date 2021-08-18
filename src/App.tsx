@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
-import DataContextProvider from './context/dataContext';
+import DataContextProvider from './context/DataContext';
 import SelectContextProvider from './context/selectContext';
 import theme from './theme';
 import { ThemeProvider } from 'theme-ui';

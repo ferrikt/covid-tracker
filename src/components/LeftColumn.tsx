@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useCountryDataCtx } from '../context/dataContext';
+import { useCountryDataCtx } from '../context/DataContext';
 import { useSelectCountryCtx } from '../context/selectContext';
 import { Grid, Flex, Heading, Text } from 'theme-ui';
 import { List, ListItem } from './Styled';
@@ -48,7 +48,7 @@ const LeftColumn: React.SFC<IProps> = (props: IProps) => {
                                 ? globalCases?.toLocaleString() ?? 'No data'
                                 : selectedCountryObj?.value.toLocaleString()}
 
-                            {}
+                            { }
                         </Heading>
                     </>
                 )}
