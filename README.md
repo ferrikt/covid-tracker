@@ -6,7 +6,7 @@ Coronavirus dashboard offers a real-time window on a global pandemic - view of c
 
 Check it here: https://ferrikt.github.io/covid-tracker/
 
-Thanks to Github for the hosting.
+Thanks to Github for the hosting!
 
 <a href="https://ferrikt.github.io/covid-tracker/" target="_blank">
     <img src="./public/dashboard.png">
